@@ -1,6 +1,6 @@
 
 
-# DUAR Framework: Dynamically Adaptive Uncertainty-aware Recommendations
+# DUAR: Dynamically Adaptive Uncertainty-aware Recommendations
 
 This repository implements a pipeline to generate prediction sets with guaranteed performance with the DUAR framework.
 
