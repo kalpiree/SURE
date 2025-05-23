@@ -1,84 +1,32 @@
-Hi there👋
+## Oracle4Rec
 
-This is the official implementation of **Oracle4Rec**, which is accepted by WSDM 2025.
+<h2>Overview</h2>
 
-We hope this code helps you well. If you use this code in your work, please cite our paper.
+<p>Oracle4Rec is a sequential recommender that learns disentangled representations of past and future user behavior via dual autoencoder branches. It introduces a transition regularizer that aligns the latent embeddings from past and future interactions using an attenuation mechanism. The model is trained phase-wise and can adapt to evolving user-item distributions across temporal segments.</p>
 
-```
-Oracle-guided Dynamic User Preference Modeling for Sequential Recommendation
-Jiafeng Xia, Dongsheng Li, Hansu Gu, Tun Lu, Peng Zhang, Li Shang and Ning Gu.
-The 18th ACM International Conference on Web Search and Data Mining (WSDM). 2025
-```
+<h2>Project Structure</h2>
 
+<ul>
+<li><code>models.py</code> – Contains the full Oracle4Rec model with dual encoders, attention layers, frequency-based filters, and transition loss logic.</li>
+<li><code>main.py</code> – Orchestrates phase-wise training and evaluation. Loads data, trains the model with early stopping, and saves scores.</li>
+<li><code>trainers.py</code> – Trainer class encapsulating training, validation, and inference logic. Computes HR@K, NDCG@K, and MRR.</li>
+<li><code>datasets.py</code> – Implements the <code>Dataset</code> class for both training and evaluation formats, including support for negative sampling.</li>
+<li><code>utils.py</code> – Includes data loading, early stopping, seed setting, metric computation, and custom dataloader logic.</li>
+</ul>
 
+<h2>How to Run</h2>
 
-### How to run this code
+<h3>Step 1: Train Oracle4Rec Phase-by-Phase</h3>
 
-##### Step 1: Check the compatibility of your running environment. Generally, different running environments will still have a chance to cause different experimental results though all random processes are fixed in the code. Our running environments are
+<pre><code>python main.py \
+  --data_dir ./processed_datasets \
+  --output_dir ./output \
+  --data_name goodreads \
+  --cudaid 0 \
+  --epochs 5 \
+  --model_name oracle4rec
+</code></pre>
 
-```
-- CPU: Intel(R) Xeon(R) Silver 4110
-- GPU: Nvidia TITAN V (12GB)
-- Memory: 376.6 GB
-- Operating System: Ubuntu 16.04
-- CUDA Version: 10.1
-- Python Packages:
-  - numpy: 1.19.2
-  - pandas: 1.1.3
-  - python: 3.6
-  - pytorch: 1.7.0
-  - scikit-learn: 0.23.2
-  - scipy: 1.5.2
-  
-OR
-
-- CPU: Intel(R) Xeon(R) Gold 5218
-- GPU: Nvidia GeForce RTX 2080 Ti (11GB)
-- Memory: 471.7 GB
-- Operating System: Ubuntu 16.04
-- CUDA Version: 10.0
-- Python Packages:
-  - numpy: 1.19.2
-  - pandas: 1.1.3
-  - python: 3.6
-  - pytorch: 1.9.0
-  - scikit-learn: 0.23.2
-  - scipy: 1.5.2
-```
-
-Both environments have passed our test.
+<p>This will train the model across 5 phases (per user sequence) and save model checkpoints in <code>output/goodreads_model{X}_phase{Y}/model.pt</code>.</p>
 
 
-
-##### Step 2: prepare the dataset.
-
-Please put the datasets under the directory `data/`. If you use your own datasets, check their format so as to make sure that it matches the input format of `Oracle4Rec`.
-
-
-
-##### Step 3: Run the code.
-
-* For `ML1M` dataset, please use the following code:
-
-  ```sh
-  python main.py --data_name ml1m
-  ```
-
-* For `Beauty` dataset, please use the following code:
-
-  ```sh
-  python main.py --data_name Beauty --lr 0.001 --num_filter_layers 3 --alpha 0.005 --hidden_size 128 --num_hidden_layers 3 --decay_factor 0.05 --ratio 0.75
-  ```
-
-
-* For ```Sports``` dataset, please use the following code:
-
-  ```sh
-  python main.py --data_name Sports --lr 0.001 --num_filter_layers 3 --alpha 0.01 --hidden_size 128 --num_hidden_layers 3 --decay_factor 0.05 --ratio 0.75
-  ```
-
-  
-
-### Acknowledgement
-
-Our code is built upon [FMLP-Rec](https://github.com/Woeee/FMLP-Rec), we thank authors for their efforts.
