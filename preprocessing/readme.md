@@ -24,10 +24,6 @@
 
 <h2>How to Run</h2>
 
-<h3>Step 1: Install Dependencies</h3>
-
-<pre><code>pip install -r requirements.txt
-</code></pre>
 
 <h3>Step 2: Prepare Input Data</h3>
 
@@ -45,7 +41,7 @@
 
 <h3>Step 3: Run Preprocessing Script</h3>
 
-<pre><code>python preprocessing.py
+<pre><code>python bootstrap_and_phase_all.py
 </code></pre>
 
 <p>This will generate:</p>
