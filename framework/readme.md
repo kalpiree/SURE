@@ -16,7 +16,7 @@ DUAR (Dynamic Adaptive Uncertainty Risk minimization) is a framework for dynamic
 ├── run_daur_.py         # Core DAUR logic
 ```
 
-## 🔧 Setup
+##  Setup
 
 Requires:
 
@@ -29,7 +29,7 @@ Install dependencies (if needed):
 pip install pandas numpy scikit-learn torch
 ```
 
-## ▶️ How to Run
+##  How to Run
 
 ### Step 1: Normalize Evaluation Files
 
@@ -75,7 +75,7 @@ python main_.py \
 | `--max_pred_set_size` | Max items in prediction set |
 | `--freeze_inference`  | Freeze updates during final phase |
 
-## 📊 Output
+## Output
 
 Results are saved under:
 
