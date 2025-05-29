@@ -6,7 +6,7 @@ This repository implements a pipeline to generate prediction sets with guarantee
 
 ---
 
-## 🔁 Pipeline Overview
+## Pipeline Overview
 
 ### 1. **Data Preprocessing**
 Generates phase-wise training and evaluation data.
@@ -45,12 +45,12 @@ Each CSV must contain:
 ### 3. **DUAR Calibration & Aggregation**
 Use DUAR to calibrate models and adaptively ensemble them over time.
 
-#### 🧹 Normalize Scores
+####  Normalize Scores
 ```bash
 python data/loader.py --dataset sasrec --subdataset goodreads --output_root datasets_
 ```
 
-#### 🚀 Run DUAR
+####  Run DUAR
 ```bash
 bash duar.sh
 ```
@@ -76,7 +76,7 @@ python main_.py \
 
 ---
 
-## 🧠 DUAR Components
+##  DUAR Components
 
 - `main_.py`: Entry point for DUAR. Runs lambda calibration + adaptive ensemble.
 - `run_daur_.py`: Implements the time-evolving risk-driven aggregation loop.
@@ -90,7 +90,7 @@ python main_.py \
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 ```
 .
