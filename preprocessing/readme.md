@@ -25,7 +25,7 @@
 <h2>How to Run</h2>
 
 
-<h3>Step 2: Prepare Input Data</h3>
+<h3>Step 1: Prepare Input Data</h3>
 
 <p>Place the following CSVs inside the <code>output/</code> folder:</p>
 
@@ -39,7 +39,7 @@
 
 <p>Each file must include these columns: <code>user_idx</code>, <code>item_idx</code>, <code>timestamp</code>.</p>
 
-<h3>Step 3: Run Preprocessing Script</h3>
+<h3>Step 2: Run Preprocessing Script</h3>
 
 <pre><code>python bootstrap_and_phase_all.py
 </code></pre>
