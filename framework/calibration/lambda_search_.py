@@ -29,13 +29,13 @@ def search_valid_lambda_step0(
     B = 1.0
     lambda_cardinality = len(lambda_grid)
     confidence_correction = B / sqrt(2 * n_users) * sqrt(log((2 * lambda_cardinality) / delta))
-
-    scale_map = {
-        0.05: 0.20, 0.10: 0.18, 0.15: 0.16, 0.20: 0.14, 0.25: 0.12,
-        0.30: 0.11, 0.35: 0.10, 0.40: 0.09, 0.45: 0.08, 0.50: 0.07
-    }
-    scale_factor = scale_map.get(round(delta, 2), 1.0)
-    confidence_correction *= scale_factor
+    # testing
+    # scale_map = {
+    #     0.05: 0.20, 0.10: 0.18, 0.15: 0.16, 0.20: 0.14, 0.25: 0.12,
+    #     0.30: 0.11, 0.35: 0.10, 0.40: 0.09, 0.45: 0.08, 0.50: 0.07
+    # }
+    # scale_factor = scale_map.get(round(delta, 2), 1.0)
+    # confidence_correction *= scale_factor
 
     risk_threshold = (1.0 - base_utility) + alpha - confidence_correction
 
