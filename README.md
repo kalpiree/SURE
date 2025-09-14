@@ -42,17 +42,17 @@ Each CSV must contain:
 
 ---
 
-### 3. **DUAR Calibration & Aggregation**
-Use DUAR to calibrate models and adaptively ensemble them over time.
+### 3. **SURE Calibration & Aggregation**
+Use SURE to calibrate models and adaptively ensemble them over time.
 
 ####  Normalize Scores
 ```bash
 python data/loader.py --dataset sasrec --subdataset goodreads --output_root datasets_
 ```
 
-####  Run DUAR
+####  Run SURE
 ```bash
-bash duar.sh
+bash sure.sh
 ```
 
 Or manually:
@@ -76,17 +76,17 @@ python main_.py \
 
 ---
 
-##  DUAR Components
+##  SURE Components
 
-- `main_.py`: Entry point for DUAR. Runs lambda calibration + adaptive ensemble.
-- `run_daur_.py`: Implements the time-evolving risk-driven aggregation loop.
+- `main_.py`: Entry point for SURE. Runs lambda calibration + adaptive ensemble.
+- `run_sure_.py`: Implements the time-evolving risk-driven aggregation loop.
 - `calibration/`: Core calibration logic:
   - `adaptive_loop.py`: Adaptive λ update based on segment-level risk
   - `aggregator_.py`: Model weighting and prediction set union
   - `lambda_search_.py`: Risk-controlled lambda search
   - `risk_estimator.py`: Empirical loss computation
   - `segment_shift.py`: Segment selection via concept/covariate shift
-- `data/loader.py`: Normalizes model outputs into DUAR-ready format
+- `data/loader.py`: Normalizes model outputs into SURE-ready format
 
 ---
 
@@ -104,10 +104,10 @@ python main_.py \
 │   ├── segment_shift.py
 │   └── set_constructor_.py
 ├── main_.py
-├── run_daur_.py
-├── duar.sh
+├── run_sure_.py
+├── sure.sh
 ├── datasets_/           # Normalized model predictions
-└── outputs/             # DUAR outputs
+└── outputs/             # SURE outputs
 ```
 
 ---
