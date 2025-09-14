@@ -1,6 +1,6 @@
 
 
-# DUAR: Dynamically Adaptive Uncertainty-aware Recommendations
+# SURE: Shift-aware, User-adaptive, Risk-controlled rEcommendations
 
 This repository implements a pipeline to generate prediction sets with guaranteed performance with the DUAR framework.
 
